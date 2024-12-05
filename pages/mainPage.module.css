@@ -1,0 +1,13 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.Background{
+    color: white;
+    background-color: black;
+    height: 100vh;
+}
+
+
+

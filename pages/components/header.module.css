@@ -1,0 +1,21 @@
+.Header{
+    background-color: rgb(45, 117, 36);
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.MenuImage{
+    height: 50px;
+    width: 50px;
+}
+
+.LogoImage{
+    height: 100px;
+    width: 300px;
+}
