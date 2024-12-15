@@ -18,18 +18,19 @@ export default function LoginPage() {
       );
 
       if (user) {
-        router.push("../MainPage");
+        localStorage.setItem('user', JSON.stringify({ username: user.username }));
+        router.push('/MainPage');
       } else {
         setMessage('Ohh, something went wrong, try again.');
       }
     } catch (error) {
-      setMessage('An error occured while connecting to the server.');
+      setMessage('An error occurred while connecting to the server.');
     }
   };
 
-  const GoBack = () =>{
-    router.back()
-  }
+  const GoBack = () => {
+    router.back();
+  };
 
   return (
     <div className={styles.container}>
@@ -37,9 +38,10 @@ export default function LoginPage() {
         src="../arrow-left.avif"
         className={styles.backImage}
         onClick={GoBack}
+        alt="Go Back"
       />
       <form className={styles.form} onSubmit={e => e.preventDefault()}>
-      <h2 className={styles.title}>Login</h2>
+        <h2 className={styles.title}>Login</h2>
         <input
           type="text"
           placeholder="Username"
