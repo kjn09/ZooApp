@@ -21,8 +21,8 @@ export default function Navbar({ onClose }) {
       <ul className={styles.NavbarList}>
         <li onClick={() => goToPage('./MainPage')}>Home</li>
         <li onClick={() => goToPage('./profilePage')}>Profile</li>
-        <li onClick={() => goToPage('./about')}>About</li>
-        <li onClick={() => goToPage('./contact')}>Contact</li>
+        <li onClick={() => goToPage('./group')}>Groups</li>
+        <li onClick={() => goToPage('./mapsPage')}>Maps</li>
       </ul>
     </div>
   );
