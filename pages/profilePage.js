@@ -36,16 +36,17 @@ export default function ProfilePage() {
       <Header onMenuClick={toggleNavbar} />
 
       {isNavbarOpen && <Navbar onClose={closeNavbar} />}
-
-      <h1 className={styles.title}>Welcome to your Profile</h1>
-      {user ? (
-        <div>
-          <p className={styles.info}>Username: <strong>{user.username}</strong></p>
-          <button className={styles.button} onClick={handleLogout}>Logout</button>
+        <div class={styles.container}>
+          <h1 className={styles.title}>Welcome to your Profile</h1>
+          {user ? (
+            <div>
+              <p className={styles.info}>Username: <strong>{user.username}</strong></p>
+              <button className={styles.button} onClick={handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
     </div>
   );
 }

@@ -3,8 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Die volle Höhe des Bildschirms nutzen */
+  height: auto;
   text-align: center;
+  padding-top: 50px;
 }
 
 .title {
