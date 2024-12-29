@@ -6,9 +6,10 @@ export default function Header({ onMenuClick, title }) {
 
   const router = useRouter();
 
-  const Reload = () => {
-    router.push("./MainPage");
-  };
+    const Reload = () => {
+      window.location.reload();
+    };
+
   const Profile = () => {
     router.push("./profilePage");
   };
