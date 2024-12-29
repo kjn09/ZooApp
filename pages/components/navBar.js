@@ -7,7 +7,7 @@ export default function Navbar({ onClose }) {
 
   const goToPage = (page) => {
     router.push(page);
-    onClose();
+    onClose(); // Schließt die Navbar nach Navigation
   };
 
   return (
@@ -15,7 +15,7 @@ export default function Navbar({ onClose }) {
       <img
         src="../arrow-left.avif"
         className={styles.backImage}
-        onClick={onClose}
+        onClick={onClose} // Schließt die Navbar
         alt="Back"
       />
       <ul className={styles.NavbarList}>

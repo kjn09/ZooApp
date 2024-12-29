@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import styles from "./map.module.css";
+import styles from "./components/map.module.css";
+import Header from './components/header';
+import Navbar from './components/navbar';
 
-// Dynamisches Laden von React-Leaflet-Komponenten
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
 const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
 const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
 
-export default function MapPage() {
+export default function restaurantMapPage() {
   const [leaflet, setLeaflet] = useState(null);
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
+  const closeNavbar = () => {
+    setIsNavbarOpen(false);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -26,7 +36,6 @@ export default function MapPage() {
         },
       });
 
-
       setLeaflet({
         HotDog: new LeafIcon({ iconUrl: '/pin.png' }),
         BurgerHouse: new LeafIcon({ iconUrl: '/pin.png' }),
@@ -35,16 +44,20 @@ export default function MapPage() {
     }
   }, []);
 
-    const locations = [
-      { id: 1, name: 'HotDog', lat: 47.3855, lng: 8.5730, icon: 'HotDog' },
-      { id: 2, name: 'BurgerHouse', lat: 47.3860, lng: 8.5745, icon: 'BurgerHouse' },
-      { id: 3, name: 'Pizzeria', lat: 47.3847, lng: 8.5750, icon: 'Pizzeria' },
-    ];
-
+  const locations = [
+    { id: 1, name: 'HotDog', lat: 47.3855, lng: 8.5730, icon: 'HotDog' },
+    { id: 2, name: 'BurgerHouse', lat: 47.3860, lng: 8.5745, icon: 'BurgerHouse' },
+    { id: 3, name: 'Pizzeria', lat: 47.3847, lng: 8.5750, icon: 'Pizzeria' },
+  ];
 
   if (!leaflet) return <div>Loading map...</div>;
 
-    return (
+  return (
+    <div>
+      <Header onMenuClick={toggleNavbar} title={"Restaurants im Zürich Zoo"} />
+
+      {isNavbarOpen && <Navbar onClose={closeNavbar} />}
+
       <div className={styles.Container}>
         <MapContainer
           center={[47.3847, 8.5730]}
@@ -59,12 +72,13 @@ export default function MapPage() {
             <Marker
               key={location.id}
               position={[location.lat, location.lng]}
-              icon={leaflet[location.icon]} // Anpassung des Icons
+              icon={leaflet[location.icon]}
             >
               <Popup>{location.name}</Popup>
             </Marker>
           ))}
         </MapContainer>
       </div>
-    );
+    </div>
+  );
 }
