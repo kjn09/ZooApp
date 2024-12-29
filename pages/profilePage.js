@@ -33,11 +33,10 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <Header onMenuClick={toggleNavbar} />
+      <Header onMenuClick={toggleNavbar} title={"Welcome to your Profile"} />
 
       {isNavbarOpen && <Navbar onClose={closeNavbar} />}
         <div class={styles.container}>
-          <h1 className={styles.title}>Welcome to your Profile</h1>
           {user ? (
             <div>
               <p className={styles.info}>Username: <strong>{user.username}</strong></p>
