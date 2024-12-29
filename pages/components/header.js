@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./header.module.css";
 import { useRouter } from 'next/router';
 
-export default function Header({ onMenuClick }) {
+export default function Header({ onMenuClick, title }) {
 
   const router = useRouter();
 
@@ -19,7 +19,7 @@ export default function Header({ onMenuClick }) {
         <div onClick={onMenuClick}>
           <img className={styles.MenuImage} src='/Menu_Icon.jpg' alt="Menu Icon" />
         </div>
-        <div onClick={Reload}>Zoo</div>
+        <div onClick={Reload}>{title}</div>
         <div onClick={Profile}>LoginProfile</div>
       </div>
     </div>

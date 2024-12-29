@@ -17,7 +17,7 @@ export default function MainPage() {
 
   return (
     <div className={styles.Background}>
-      <Header onMenuClick={toggleNavbar} />
+      <Header onMenuClick={toggleNavbar} title={"Zoo"} />
       {isNavbarOpen && <Navbar onClose={closeNavbar} />}
       <ZooInfo/>
     </div>
