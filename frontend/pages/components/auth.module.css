@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100vh;
     background-color: #000000;
-    position: relative; /* Added for absolute positioning of backImage */
+    position: relative;
 }
 
 .title {
