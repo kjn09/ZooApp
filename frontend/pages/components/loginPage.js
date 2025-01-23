@@ -18,7 +18,7 @@ export default function LoginPage() {
       );
 
       if (user) {
-        localStorage.setItem('user', JSON.stringify({ username: user.username }));
+        localStorage.setItem('user', JSON.stringify({ username: user.username, id: user.id }));
         router.push('/MainPage');
       } else {
         setMessage('Ohh, something went wrong, try again.');

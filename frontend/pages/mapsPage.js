@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './mapsPage.module.css';
+import Header from './components/header';
+import Navbar from './components/navbar';
 
 export default function MapPage() {
   const router = useRouter();
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
+  const closeNavbar = () => {
+    setIsNavbarOpen(false);
+  };
 
   const openAnimalMap = () => {
     router.push('/animalMap');
@@ -15,11 +26,13 @@ export default function MapPage() {
 
   return (
     <div className={styles.container}>
+    <Header onMenuClick={toggleNavbar} title="Our Maps"/>
+      {isNavbarOpen && <Navbar onClose={closeNavbar} />}
       <h1>Select a Map</h1>
       <div className={styles.mapContainer}>
         <div className={styles.mapCard} onClick={openAnimalMap}>
           <img
-            src="/animal_map.jpg"
+            src="/animalia.jpg"
             alt="Animal Map"
             className={styles.mapImage}
           />
@@ -28,7 +41,7 @@ export default function MapPage() {
 
         <div className={styles.mapCard} onClick={openRestaurantMap}>
           <img
-            src="/restaurant_map.jpg"
+            src="/restaurant.jpg"
             alt="Restaurant Map"
             className={styles.mapImage}
           />

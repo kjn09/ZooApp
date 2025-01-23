@@ -1,7 +1,3 @@
-
-
-
-
 export default function(){
 
   const GoBack = () =>{
